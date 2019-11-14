@@ -11,7 +11,7 @@ chai.should();
 chai.use(chaiThings);
 chai.use(chaiHttp);
 
-let { token } = auth;
+let  token  =  '"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNvbnF1ZXJvcnN3b3JkMzZAeWFob28uY29tIiwiaWQiOiI3ODEyMGFhYy1lZGU1LTQ2ZjctOGMyMy04ZTdmZDQzYjg4NzQiLCJpc0FkbWluIjoidHJ1ZSIsImlhdCI6MTU3MzY0MDg3NiwiZXhwIjoxNTc5Njg4ODc2fQ.8u8f5sd_HEbTSKKPk_ZkLrlEvxDysRoVEAZBdOxF4MU",';
 before((done) => {
   const login = {
     email: 'conquerorsword36@yahoo.com',
@@ -43,7 +43,17 @@ describe('Sign up endpoints', () => {
     done();
   });
   it('should create a user', (done) => {
-    const data = {...users[0]};
+    const data = {
+    'first_name': 'hirwa',
+    'last_name': 'felix',
+    'email': 'reef01.1@gmail.com',
+    'password': '$2b$08$q7.kLHnw35Nli',
+    'gender': 'male',
+    'job_role': 'developer',
+    'department': 'Software developer',
+    'address': 'kigali-kicukiro-noboye',
+    'is_admin':'true'    
+    };
     chai.request(server)
         .post('/api/v1/auth/create-user')
         .set('Content-Type', 'application/json')
