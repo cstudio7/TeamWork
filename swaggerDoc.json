@@ -1,0 +1,941 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Teamwork is an online platform where people from same organization meet for social benefits.",
+    "version": "1",
+    "title": "Auto-Mart",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "conquerorsword36@yahoo.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Users",
+      "description": "Operations on Teamwork User"
+    },
+    {
+      "name": "Article",
+      "description": "Operations on Teamwork User"
+    },
+    {
+      "name": "Gif",
+      "description": "Operations on Teamwork Gif Ads"
+    },
+    {
+      "name": "Flag",
+      "description": "flag/report a posted AD as fraudulent."
+    }
+  ],
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/api/v1/article": {
+      "post": {
+        "tags": [
+          "Article"
+        ],
+        "summary": "Create an article",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Required fields",
+            "schema": {
+              "properties": {
+                "article_id": {
+                  "type": "integer",
+                  "example": "d7848407-ad61-4580-9834-8802dbe9ecab"
+                },
+                "created_on": {
+                  "type": "string",
+                  "example": "2019-11-12 07:14:43"
+                },
+                "title": {
+                  "type": "string",
+                  "example": "Bad Post"
+                },
+                "article": {
+                  "type": "string",
+                  "example": "The bad boys in the class always talk too much and you dont get anything out of the box"
+                },
+                "author_id": {
+                  "type": "integer",
+                  "example": "d7848407-ad61-4580-9834-8802dbe9ecab"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful",
+            "schema": {
+              "$ref": "#/definitions/Article"
+            }
+          },
+          "404": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/api/v1/feed": {
+        "get": {
+          "tags": [
+            "article"
+          ],
+          "summary": "View all Articles in descending other",
+          "description": "",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "$ref": "#/definitions/ArticlesArray"
+              }
+            },
+            "404": {
+              "description": "Invalid input"
+            }
+          },
+          "security": [
+            {
+              "api_key": []
+            }
+          ]
+        }
+      },
+    "/api/v1/feeds": {
+      "get": {
+        "tags": [
+          "gif"
+        ],
+        "summary": "View all gifs in descending other",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GifsArray"
+            }
+          },
+          "404": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+
+    "/api/v1/article/:articleId": {
+      "patch": {
+        "tags": [
+          "Article"
+        ],
+        "summary": "Update/edit an article",
+        "description": "",
+        "operationId": "updateArticle",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "ArticleId",
+            "type": "string",
+            "description": "Mark Article Ad as sold",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "operation successful",
+            "schema": {
+              "$ref": "#/definitions/Article"
+            }
+          },
+          "400": {
+            "description": "Invalid Input"
+          },
+          "404": {
+            "description": "Article not found"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Article"
+        ],
+        "summary": "delete an article",
+        "description": "Multiple status values can be provided with comma separated strings",
+        "operationId": "Article_Id",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "article_Id",
+            "in": "req.body",
+            "description": "id of article to be deleted",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "Required",
+            "description": "required field",
+            "schema": {
+              "properties": {
+                "price": {
+                  "type": "success",
+                  "description": "Article successfully deleted"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/Article"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "/api/v1/feed": {
+        "get": {
+          "tags": [
+            "article"
+          ],
+          "summary": "View an Articles in descending other",
+          "description": "",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "$ref": "#/definitions/CarArray"
+              }
+            },
+            "404": {
+              "description": "Invalid input"
+            }
+          },
+          "security": [
+            {
+              "api_key": []
+            }
+          ]
+        }
+      }
+    },
+
+    "/articles/articleId/comment": {
+      "post": {
+        "tags": [
+          "Article"
+        ],
+        "summary": "Comment on an article ",
+        "description": "Multiple status values can be provided with comma separated strings",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "article_id",
+            "in": "req.body",
+            "description": "id of a specific article to have comment",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "comment",
+            "in": "path",
+            "description": "comment",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Article"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/api/v1/flag": {
+      "post": {
+        "tags": [
+          "Flag"
+        ],
+        "summary": "Report or Flag a Car Ad as fraudulent",
+        "description": "post reasons and description of Car Ad as fraudulent",
+        "operationId": "getInventory",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "flag",
+            "description": "description",
+            "schema": {
+              "properties": {
+                "car_id": {
+                  "type": "integer",
+                  "description": "Article ID"
+                },
+                "reason": {
+                  "type": "string",
+                  "description": "reason for report"
+                },
+                "description": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Flag"
+            }
+          },
+          "400": {
+            "description": "Invalid"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+
+      "delete": {
+        "tags": [
+          "Flag"
+        ],
+        "summary": "Delete a specific Flag Ad ",
+        "description": "Admin can delete a specific Flag Ad",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "author_Id",
+            "in": "path",
+            "type": "integer",
+            "description": "Id of a specific Car for Deletion",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Flagged comment successfully deleted"
+          },
+          "404": {
+            "description": "No car found"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/api/v1/gifs": {
+      "post": {
+        "tags": [
+          "Gif"
+        ],
+        "summary": "Create a gif post",
+        "description": "Returns a map of status codes to quantities",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Required fields",
+            "description": "Required field",
+            "schema": {
+              "type": "object",
+              "required": [
+                "userName"
+              ],
+              "properties": {
+                "gif_id": {
+                  "type": "integer"
+                }
+              }
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/gifs"
+            }
+          },
+          "400": {
+            "description": "Invalid"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/api/v1/gifs/:gifId/comment": {
+      "post": {
+        "tags": [
+          "Gif"
+        ],
+        "summary": "Comment on a gif post",
+        "description": "Returns a map of status codes to quantities",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Required fields",
+            "description": "Required field",
+            "schema": {
+              "type": "object",
+              "required": [
+                "userName"
+              ],
+              "properties": {
+                "gif_id": {
+                  "type": "integer"
+                },
+                "comment": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/gifs"
+            }
+          },
+          "400": {
+            "description": "Invalid"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/api/v1/gif/:gifId": {
+      "delete": {
+        "tags": [
+          "gif"
+        ],
+        "summary": "delete a particular gif post",
+        "description": "",
+        "operationId": "placeGif",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "name": "gif_id"
+          },
+          {
+            "in": "body",
+            "name": "Required fields",
+            "description": "Required field",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "gif_id": {
+                  "type": "uuid",
+                  "example": "ca95a411-41c0-44a9-97c5-50593e618838"
+                }
+              }
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Gif successfully deleted"
+                },
+                "gif_id": {
+                  "type": "string",
+                  "description": "gif_id",
+                  "example": "ca95a411-41c0-44a9-97c5-50593e618838"
+                },
+                "title": {
+                  "type": "string",
+                  "format": "VARCHAR",
+                  "description": "BROKERS"
+                },
+                "gif_url": {
+                  "type": "string",
+                  "description": "Cloudinary url of gif",
+                  "example": "https://res.cloudinary.com/drmiaugou/image/upload/v1573542889/v2jbtqev1fabzsojcojc.jpg"
+                },
+                "author_id": {
+                  "type": "integer",
+                  "description": "author identification",
+                  "example": "ca95a411-41c0-44a9-97c5-50593e618838"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Invalid request"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "gif"
+        ],
+        "summary": "get a particular gif post",
+        "description": "",
+        "operationId": "placeGif",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "name": "gif_id"
+          },
+          {
+            "in": "body",
+            "name": "Required fields",
+            "description": "Required field",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "gif_id": {
+                  "type": "uuid",
+                  "example": "ca95a411-41c0-44a9-97c5-50593e618838"
+                },
+                "created_on": {
+                  "type": "Datetime",
+                  "example": "2019-11-05T13:31:11.701Z"
+                },
+                "title": {
+                  "type": "String",
+                  "example": "New Bee"
+                },
+                "author_id": {
+                  "type": "uuid",
+                  "example": "ca95a411-41c0-44a9-97c5-50593e618838"
+                },
+                "comment": {
+                  "type": "uuid",
+                  "example": "ca95a411-41c0-44a9-97c5-50593e618838"
+                }
+              }
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Gif successfully deleted"
+                },
+                "gif_id": {
+                  "type": "string",
+                  "description": "gif_id",
+                  "example": "ca95a411-41c0-44a9-97c5-50593e618838"
+                },
+                "title": {
+                  "type": "string",
+                  "format": "VARCHAR",
+                  "description": "BROKERS"
+                },
+                "gif_url": {
+                  "type": "string",
+                  "description": "Cloudinary url of gif",
+                  "example": "https://res.cloudinary.com/drmiaugou/image/upload/v1573542889/v2jbtqev1fabzsojcojc.jpg"
+                },
+                "author_id": {
+                  "type": "integer",
+                  "description": "author identification",
+                  "example": "ca95a411-41c0-44a9-97c5-50593e618838"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Invalid request"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/api/v1/auth/create-user": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Creates user account",
+        "description": "",
+        "operationId": "createUsersWithArrayInput",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "create-user",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "first_name": {
+                  "type": "string",
+                  "example": "John"
+                },
+                "last_name": {
+                  "type": "string",
+                  "example": "Doe"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "johndoe@company.com"
+                },
+                "password": {
+                  "type": "string"
+                },
+                "address": {
+                  "type": "string",
+                  "description": "Address of Teamwork User"
+                },
+                "is_admin": {
+                  "type": true,
+                  "description": "confirms if user is an Admin"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "400": {
+            "description": "Invalid"
+          }
+        }
+      }
+    },
+    "/api/v1/auth/signin": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Logs user into the system",
+        "description": "",
+        "operationId": "loginUser",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "signup",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "example": "johndoe@company.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "password"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "400": {
+            "description": "User not found"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "api_key": {
+      "type": "apiKey",
+      "name": "token",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "gif": {
+      "type": "object",
+      "properties": {
+        "gif_id": {
+          "type": "integer",
+          "format": "uuid"
+        },
+        "created_on": {
+          "type": "String",
+          "description": "Created time"
+        },
+        "title": {
+          "type": "string",
+          "format": "VARCHAR",
+          "description": "Title of gif"
+        },
+        "gif_url": {
+          "type": "string",
+          "description": "cloudinary url"
+        },
+        "author_id": {
+          "type": "string",
+          "description": "author id"
+        }
+      }
+    },
+    "Users": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "uuid"
+        },
+        "token": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "first_name": {
+          "type": "string",
+          "example": "John"
+        },
+        "last_name": {
+          "type": "string",
+          "example": "Doe"
+        },
+        "email": {
+          "type": "string",
+          "example": "johndoe@company.com"
+        },
+        "password": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string",
+          "description": "Address of Teamwork User"
+        },
+        "is_admin": {
+          "type": true,
+          "description": "confirms if user is an Admin"
+        },
+        "gender": {
+          "type": "string",
+          "description": "confirms gender status"
+        },
+        "job_role": {
+          "type": "string",
+          "description": "confirms job role"
+        },
+        "department": {
+          "type": "string",
+          "description": "confirms department"
+        }
+      },
+      "xml": {
+        "name": "User"
+      }
+    },
+    "Article": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "article_id": {
+          "type": "integer",
+          "format": "uuid"
+        },
+        "created_on": {
+          "type": "string",
+          "example": "user id"
+        },
+        "title": {
+          "type": "string",
+          "example": "New Cloths"
+        },
+        "article": {
+          "type": "string",
+          "example": "Benz"
+        },
+        "author_id": {
+          "type": "string",
+          "format":"uuid"
+        }
+      }
+    },
+    "Flag": {
+      "items": {
+        "type": "object"
+      },
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "email": {
+          "type": "integer",
+          "description": "email"
+        },
+        "reason": {
+          "type": "string",
+          "description": "reason for report"
+        },
+        "created on": {
+          "type": "integer",
+          "description": "report date"
+        },
+        "description": {
+          "type": "string"
+        },
+        "comment_id": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Flag"
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more on Teamwork site"
+  }
+}
