@@ -53,15 +53,4 @@ before(function (done) {
 
     done();
   });
-  it('should create a user', function (done) {
-    var data = _objectSpread({}, _mock.users[0]);
-
-    _chai["default"].request(_server["default"]).post('/api/v1/auth/create-user').set('Content-Type', 'application/json').set('x-access-token', token).send(data).end(function (request, response) {
-      response.body.should.have.property('status').equal('success');
-      response.body.data.should.be.an('Object');
-      response.body.data.should.have.property('message').equal('User account successfully created');
-    });
-
-    done();
-  });
 });
