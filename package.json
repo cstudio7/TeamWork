@@ -7,6 +7,7 @@
     "start": "cross-env NODE_ENV=test babel-node ./build/server.js",
     "dev": "cross-env NODE_ENV=development nodemon --exec babel-node ./SERVER/server",
     "build": "babel ./SERVER --out-dir build",
+     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "create:tables": "node ./SERVER/usingDB/db/db createUserTables && node ./SERVER/usingDB/db/db createGifTables && node ./SERVER/usingDB/db/db createArticleTables && node ./SERVER/usingDB/db/db createCommentTables && node ./SERVER/usingDB/db/db createFlagTables",
     "test": "cross-env NODE_ENV=test && npm run create:tables && nyc --reporter=text mocha --exit --require @babel/register --require @babel/polyfill SERVER/tests/*"
   },
