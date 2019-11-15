@@ -56,7 +56,7 @@ before(function (done) {
     var data = _objectSpread({}, _mock.users[0]);
 
     _chai["default"].request(_server["default"]).post('/api/v1/auth/create-user').set('Content-Type', 'application/json').set('x-access-token', token).send(data).end(function (request, response) {
-     console.log(response.json);
+    response.body.should.have.property('status').equal('error');
     });
 
     done();
