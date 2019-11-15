@@ -4,6 +4,8 @@ const articles = [
   {
     id: 5,
     createdOn: moment().format('YYYY-MM-DD HH:mm:ss'),
+
+
     category_id: 1,
     title: 'Maecenas volutpat blandit aliquam',
     image: 'https://source.unsplash.com/collection/2186949',
@@ -24,16 +26,7 @@ const articles = [
       + '\n'
       + 'Amet venenatis urna cursus eget nunc scelerisque viverra. Quis blandit turpis cursus in hac habitasse. Tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras. Laoreet suspendisse interdum consectetur libero id. Amet consectetur adipiscing elit pellentesque habitant morbi. Mauris in aliquam sem fringilla ut morbi tincidunt. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt. Vivamus arcu felis bibendum ut tristique et egestas. Diam phasellus vestibulum lorem sed risus ultricies tristique nulla. Justo laoreet sit amet cursus. Aliquam ultrices sagittis orci a scelerisque purus. A arcu cursus vitae congue. Volutpat consequat mauris nunc congue nisi vitae suscipit tellus mauris. Pellentesque eu tincidunt tortor aliquam.',
     comments: {},
-    tags: [
-      {
-        id: 1,
-        tag: 'tag 1',
-      },
-      {
-        id: 2,
-        tag: 'tag 3',
-      },
-    ],
+
   },
 ];
 
