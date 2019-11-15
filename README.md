@@ -1,4 +1,4 @@
-
+[![Build Status](https://travis-ci.org/cstudio7/TeamWork.svg?branch=dev)](https://travis-ci.org/cstudio7/TeamWork)
 
  **Teamwork**
 
