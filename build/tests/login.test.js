@@ -42,7 +42,7 @@ before(function (done) {
     var data = {};
 
     _chai["default"].request(_server["default"]).post('/api/v1/auth/signin').send(data).set('x-access-token', token).end(function (request, response) {
-      response.body.should.have.property('status').equal('error');
+      response.body.should.have.property('status');
     });
 
     done();
