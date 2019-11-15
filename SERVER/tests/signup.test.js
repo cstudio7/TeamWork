@@ -42,7 +42,24 @@ describe('Sign up endpoints', () => {
         });
     done();
   });
- 
+  it('should create a user', (done) => {
+    const data = {...users[0]};
+    chai.request(server)
+        .post('/api/v1/auth/create-user')
+        .set('Content-Type', 'application/json')
+        .set('x-access-token', token)
+        .send(data)
+        .end((request, response) => {
+          response.body.should.have.property('status')
+              .equal('success');
+          response.body.data.should.be.an('Object');
+          response.body.data.should.have.property('message')
+              .equal('User account successfully created');
+        });
+    done();
+  });
+
+
 
 
 
