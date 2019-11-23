@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/cstudio7/TeamWork.svg?branch=dev)](https://travis-ci.org/cstudio7/TeamWork)
 
+[![Coverage Status](https://coveralls.io/repos/github/cstudio7/TeamWork/badge.svg?branch=dev)](https://coveralls.io/github/cstudio7/TeamWork?branch=dev)
  **Teamwork**
 
 

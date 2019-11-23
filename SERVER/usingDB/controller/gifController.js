@@ -34,7 +34,7 @@ class Gif  {
         result = await cloudinary.uploader.upload(filename, { tags: 'gotemps', resource_type: 'auto' })
           .catch((err) => {
             if (err) {
-              util.setError(400, '.. server not connecting');
+              util.setError(400, 'invalid authentication');
               return util.send(res);
             }
           });

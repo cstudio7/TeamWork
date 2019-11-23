@@ -1,13 +1,17 @@
 
+import express from 'express';
+const app = express();
+
+
 // cors middleware
-const cors = (req, res, next) => {
+const cor = (req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header(
-    'Access-Control-Allow-Headers',
+    'Access-Control-Allow-Headers', 'x-access-token',
     'Origin, X-Requested-With, Content-Type, Accept, token',
   );
   if (req.method === 'OPTIONS') {
-    res.header('Access-Control-Allow-Methods', 'PATCH, PUT, GET, POST, DELETE');
+    res.header('x-access-token', 'PATCH, PUT, GET, POST, DELETE');
     return res.status(200).json({});
   }
 
@@ -15,4 +19,4 @@ const cors = (req, res, next) => {
   next();
 };
 
-export default cors;
+export default cor;

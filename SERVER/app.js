@@ -9,9 +9,12 @@ import userRoutes from './routes/user_route';
 import articleRoutes from './routes/article_route';
 import flagRoutes from './routes/flag_route';
 import swaggerDoc from '../swaggerDoc';
-import cors from './usingDB/middleware/cors';
+import cor from './usingDB/middleware/cors';
+import cors from 'cors';
 
 const app = express();
+app.use(cors());
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/uploads', express.static('uploads'));
@@ -19,7 +22,7 @@ app.use('/uploads', express.static('uploads'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(logger('dev'));
-app.use(cors);
+app.use(cor);
 app.use('/', userRoutes);
 app.use('/', gifRoutes);
 app.use('/', articleRoutes);
