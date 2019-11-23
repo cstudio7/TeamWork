@@ -1,11 +1,5 @@
-[![Build Status](https://travis-ci.org/cstudio7/TeamWork.svg?branch=dev)](https://travis-ci.org/cstudio7/TeamWork)
-
-[![Coverage Status](https://coveralls.io/repos/github/cstudio7/TeamWork/badge.svg?branch=dev)](https://coveralls.io/github/cstudio7/TeamWork?branch=dev)
- **Teamwork**
-
-
-
-
+[![Build Status](https://travis-ci.org/cstudio7/TeamWork.svg?branch=dev)](https://travis-ci.org/cstudio7/TeamWork)[![Coverage Status](https://coveralls.io/repos/github/cstudio7/TeamWork/badge.svg?branch=dev)](https://coveralls.io/github/cstudio7/TeamWork?branch=dev)
+ 
 Teamwork
 
 Teamwork is an remote online platform where employees of a particular company meets for social reason, where everyone can communicate for mutual benefits.
